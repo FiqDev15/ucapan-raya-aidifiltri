@@ -161,56 +161,7 @@ export default function FloatingKetupat() {
   );
 
   const fixed = useMemo(
-    () => [
-      {
-        size: 40,
-        imageSrc: FLOATING_IMAGES[0],
-        top: "8%",
-        left: "3%",
-        animClass: "float-a",
-        opacity: 0.35,
-      },
-      {
-        size: 28,
-        imageSrc: FLOATING_IMAGES[1],
-        top: "20%",
-        right: "4%",
-        animClass: "float-b",
-        opacity: 0.3,
-      },
-      {
-        size: 34,
-        imageSrc: FLOATING_IMAGES[2],
-        top: "55%",
-        left: "2%",
-        animClass: "float-c",
-        opacity: 0.3,
-      },
-      {
-        size: 36,
-        imageSrc: FLOATING_IMAGES[1],
-        top: "70%",
-        right: "3%",
-        animClass: "float-a",
-        opacity: 0.32,
-      },
-      {
-        size: 22,
-        imageSrc: FLOATING_IMAGES[0],
-        top: "88%",
-        left: "6%",
-        animClass: "float-b",
-        opacity: 0.28,
-      },
-      {
-        size: 30,
-        imageSrc: FLOATING_IMAGES[2],
-        top: "40%",
-        right: "2%",
-        animClass: "float-c",
-        opacity: 0.28,
-      },
-    ],
+    () => [],
     []
   );
 
