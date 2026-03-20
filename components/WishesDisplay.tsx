@@ -45,15 +45,6 @@ export default function WishesDisplay({ wishes }: WishesDisplayProps) {
   if (isMobile) {
     return (
       <div className="w-full px-4 py-6 space-y-3">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center mb-4"
-        >
-          <span className="text-green-400 text-sm opacity-60">
-            {wishes.length} ucapan diterima
-          </span>
-        </motion.div>
         <AnimatePresence>
           {wishes.map((wish, index) => (
             <WishBubble
@@ -127,13 +118,6 @@ export default function WishesDisplay({ wishes }: WishesDisplayProps) {
             />
           ))}
         </AnimatePresence>
-      </div>
-
-      {/* Wish count indicator */}
-      <div className="text-center py-2">
-        <span className="text-green-400 text-xs opacity-40">
-          {wishes.length} ucapan
-        </span>
       </div>
     </div>
   );

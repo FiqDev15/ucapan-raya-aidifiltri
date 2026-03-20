@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Wish } from "@/lib/supabase";
-import { formatDistanceToNow } from "date-fns";
+import { format } from "date-fns";
 import { ms } from "date-fns/locale";
 
 interface WishBubbleProps {
@@ -11,12 +11,13 @@ interface WishBubbleProps {
   isMobile?: boolean;
 }
 
-function timeAgo(dateString: string): string {
+function formatTimestamp(dateString: string): string {
   try {
-    return formatDistanceToNow(new Date(dateString), {
-      addSuffix: true,
-      locale: ms,
-    });
+    const date = new Date(dateString);
+    // Format: "20 March 04:05 PG"
+    const formatted = format(date, "d MMMM hh:mm a", { locale: ms });
+    // Replace AM/PM with Malay equivalent
+    return formatted.replace(/AM/i, "PG").replace(/PM/i, "PTG");
   } catch {
     return "";
   }
@@ -80,7 +81,7 @@ export default function WishBubble({
                 {wish.username}
               </span>
               <span className="text-xs text-green-400 opacity-60 flex-shrink-0">
-                {timeAgo(wish.created_at)}
+                {formatTimestamp(wish.created_at)}
               </span>
             </div>
             <p className="text-white text-sm leading-relaxed opacity-90">
@@ -161,7 +162,7 @@ export default function WishBubble({
 
       {/* Timestamp */}
       <p className="text-green-400 text-xs opacity-50 text-right">
-        {timeAgo(wish.created_at)}
+        {formatTimestamp(wish.created_at)}
       </p>
 
       {/* Decorative bottom line */}
