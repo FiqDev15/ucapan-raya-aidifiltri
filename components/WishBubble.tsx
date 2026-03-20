@@ -14,10 +14,19 @@ interface WishBubbleProps {
 function formatTimestamp(dateString: string): string {
   try {
     const date = new Date(dateString);
-    // Format: "20 March 04:05 PG"
-    const formatted = format(date, "d MMMM hh:mm a", { locale: ms });
-    // Replace AM/PM with Malay equivalent
-    return formatted.replace(/AM/i, "PG").replace(/PM/i, "PTG");
+    const hour = date.getHours();
+
+    // Determine time of day in Malay
+    let timeOfDay = "PG"; // Default to Pagi (morning)
+    if (hour >= 12 && hour < 18) {
+      timeOfDay = "PTG"; // Petang (afternoon)
+    } else if (hour >= 18 || hour < 6) {
+      timeOfDay = "MLM"; // Malam (night)
+    }
+
+    // Format without AM/PM
+    const formatted = format(date, "d MMMM hh:mm", { locale: ms });
+    return `${formatted} ${timeOfDay}`;
   } catch {
     return "";
   }
