@@ -73,7 +73,7 @@ export default function HomePage() {
       {/* Floating ketupat */}
       <FloatingKetupat />
 
-      {/* Background music (auto-play) */}
+      {/* Background music - runs automatically */}
       <BackgroundMusic />
 
       {/* ── Decorative elements ── */}
