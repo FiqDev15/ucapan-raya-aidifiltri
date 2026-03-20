@@ -110,7 +110,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-green-300 text-base md:text-lg opacity-80 mt-2"
+            className="text-gold-shimmer text-base md:text-lg opacity-90 mt-2"
             style={{ fontFamily: "var(--font-inter)" }}
           >
             Maaf Zahir dan Batin
