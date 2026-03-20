@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-amiri: 'Amiri', serif;
+
+  --green-950: #052e16;
+  --green-900: #14532d;
+  --green-800: #166534;
+  --green-700: #15803d;
+  --green-600: #16a34a;
+  --green-500: #22c55e;
+  --gold: #D4AF37;
+  --gold-light: #F5E17A;
+  --gold-dark: #A07D1C;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  background: var(--green-950);
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ─── Islamic Pattern Background ─── */
+.islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%2322c55e' stroke-width='0.5' opacity='0.12'%3E%3Cpath d='M40 0 L80 20 L80 60 L40 80 L0 60 L0 20 Z'/%3E%3Cpath d='M40 10 L70 25 L70 55 L40 70 L10 55 L10 25 Z'/%3E%3Cpath d='M40 20 L60 30 L60 50 L40 60 L20 50 L20 30 Z'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3Ccircle cx='40' cy='40' r='4'/%3E%3Ccircle cx='0' cy='0' r='4'/%3E%3Ccircle cx='80' cy='0' r='4'/%3E%3Ccircle cx='0' cy='80' r='4'/%3E%3Ccircle cx='80' cy='80' r='4'/%3E%3Ccircle cx='40' cy='0' r='3'/%3E%3Ccircle cx='40' cy='80' r='3'/%3E%3Ccircle cx='0' cy='40' r='3'/%3E%3Ccircle cx='80' cy='40' r='3'/%3E%3Cpath d='M40 0 L40 80'/%3E%3Cpath d='M0 40 L80 40'/%3E%3Cpath d='M0 0 L80 80'/%3E%3Cpath d='M80 0 L0 80'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* ─── Glassmorphism Card ─── */
+.glass-card {
+  background: rgba(21, 128, 61, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 24px;
+}
+
+.glass-card-dark {
+  background: rgba(5, 46, 22, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 24px;
+}
+
+/* ─── Gold Text ─── */
+.text-gold {
+  color: var(--gold);
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--green-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--green-700);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ─── Star particles ─── */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+/* ─── Wish Bubble ─── */
+.wish-bubble {
+  background: linear-gradient(135deg, rgba(22, 101, 52, 0.92), rgba(21, 128, 61, 0.85));
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.wish-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+  transform: skewX(-20deg);
+  animation: bubbleShine 4s ease-in-out infinite;
+}
+
+@keyframes bubbleShine {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.wish-bubble:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(212, 175, 55, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* ─── Mobile Card ─── */
+.wish-card-mobile {
+  background: linear-gradient(135deg, rgba(22, 101, 52, 0.9), rgba(5, 46, 22, 0.95));
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* ─── Button ─── */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
+  background-size: 200% auto;
+  color: var(--green-950);
+  font-weight: 700;
+  border: none;
+  border-radius: 16px;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-gold:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── Form Input ─── */
+.form-input {
+  background: rgba(5, 46, 22, 0.6);
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  border-radius: 16px;
+  color: #fff;
+  padding: 14px 18px;
+  width: 100%;
+  font-family: var(--font-inter);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  outline: none;
+  backdrop-filter: blur(4px);
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15), 0 4px 16px rgba(0, 0, 0, 0.2);
+  background: rgba(5, 46, 22, 0.8);
+}
+
+/* ─── Ketupat ─── */
+.ketupat {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Lantern ─── */
+.lantern {
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
+}
+
+/* ─── Crescent Moon ─── */
+.crescent {
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.7));
+}
+
+/* ─── Floating animation variations ─── */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-18px) rotate(4deg); }
+  75% { transform: translateY(-8px) rotate(-4deg); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-22px) rotate(-5deg); }
+  66% { transform: translateY(-6px) rotate(3deg); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translateY(0) rotate(5deg); }
+  50% { transform: translateY(-14px) rotate(-5deg); }
+}
+
+.float-a { animation: floatA 7s ease-in-out infinite; }
+.float-b { animation: floatB 9s ease-in-out infinite; }
+.float-c { animation: floatC 6s ease-in-out infinite; }
+
+/* ─── Drifting ketupat across screen ─── */
+@keyframes driftAcross1 {
+  0%   { transform: translateX(-120px) translateY(0) rotate(0deg); opacity: 0; }
+  5%   { opacity: 0.7; }
+  95%  { opacity: 0.7; }
+  100% { transform: translateX(calc(100vw + 120px)) translateY(-60px) rotate(360deg); opacity: 0; }
+}
+@keyframes driftAcross2 {
+  0%   { transform: translateX(calc(100vw + 120px)) translateY(0) rotate(0deg); opacity: 0; }
+  5%   { opacity: 0.6; }
+  95%  { opacity: 0.6; }
+  100% { transform: translateX(-120px) translateY(40px) rotate(-360deg); opacity: 0; }
+}
+@keyframes driftAcross3 {
+  0%   { transform: translateX(-120px) translateY(20px) rotate(45deg); opacity: 0; }
+  5%   { opacity: 0.5; }
+  95%  { opacity: 0.5; }
+  100% { transform: translateX(calc(100vw + 120px)) translateY(60px) rotate(405deg); opacity: 0; }
+}
+
+.drift-across-1 { animation: driftAcross1 18s linear infinite; }
+.drift-across-2 { animation: driftAcross2 24s linear infinite 3s; }
+.drift-across-3 { animation: driftAcross3 20s linear infinite 8s; }
+.drift-across-4 { animation: driftAcross1 28s linear infinite 12s; }
+.drift-across-5 { animation: driftAcross2 22s linear infinite 5s; }
+
+/* ─── Page fade in ─── */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-enter {
+  animation: pageEnter 0.8s ease-out forwards;
+}
+
+/* ─── Title glow ─── */
+.title-glow {
+  text-shadow:
+    0 0 20px rgba(212, 175, 55, 0.4),
+    0 0 60px rgba(212, 175, 55, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Green glow ─── */
+.green-glow {
+  box-shadow:
+    0 0 20px rgba(34, 197, 94, 0.15),
+    0 0 60px rgba(5, 46, 22, 0.6);
+}
+
+/* ─── Desktop bubble columns ─── */
+.bubbles-desktop-left,
+.bubbles-desktop-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
