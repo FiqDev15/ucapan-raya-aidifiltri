@@ -36,7 +36,7 @@ export default function WishesDisplay({ wishes }: WishesDisplayProps) {
           Belum ada ucapan lagi.
         </p>
         <p className="text-green-300 text-sm mt-1 opacity-70">
-          Jadilah yang pertama mengucapkan!
+          Jadilah yang pertama!
         </p>
       </motion.div>
     );

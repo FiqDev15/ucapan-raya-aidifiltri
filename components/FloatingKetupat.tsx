@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import Image from "next/image";
 
 const FLOATING_IMAGES = [
@@ -8,8 +8,6 @@ const FLOATING_IMAGES = [
   "/pelita.png",
   "/duitraya.png",
 ];
-
-const KETUPAT_SIZES = [32, 36, 28, 40, 24, 44, 30, 38];
 
 interface DriftingKetupatProps {
   size: number;
@@ -33,41 +31,6 @@ function DriftingKetupat({
       className={`fixed ketupat ${animClass}`}
       style={{ top, animationDelay: delay, zIndex: 1, opacity }}
     >
-      <Image src={imageSrc} alt="" width={size} height={size} style={{ objectFit: "contain" }} />
-    </div>
-  );
-}
-
-interface FloatingKetupatDecorProps {
-  size: number;
-  imageSrc: string;
-  top: string;
-  left?: string;
-  right?: string;
-  animClass: string;
-  opacity?: number;
-}
-
-function FloatingKetupatDecor({
-  size,
-  imageSrc,
-  top,
-  left,
-  right,
-  animClass,
-  opacity = 0.5,
-}: FloatingKetupatDecorProps) {
-  const style: React.CSSProperties = {
-    position: "fixed",
-    top,
-    zIndex: 1,
-    opacity,
-    ...(left ? { left } : {}),
-    ...(right ? { right } : {}),
-  };
-
-  return (
-    <div className={`ketupat ${animClass}`} style={style}>
       <Image src={imageSrc} alt="" width={size} height={size} style={{ objectFit: "contain" }} />
     </div>
   );
@@ -160,21 +123,11 @@ export default function FloatingKetupat() {
     []
   );
 
-  const fixed = useMemo(
-    () => [],
-    []
-  );
-
   return (
     <>
       {/* Drifting ketupat that float across the screen */}
       {drifting.map((k, i) => (
         <DriftingKetupat key={`drift-${i}`} {...k} />
-      ))}
-
-      {/* Fixed floating ketupat around edges */}
-      {fixed.map((k, i) => (
-        <FloatingKetupatDecor key={`fixed-${i}`} {...k} />
       ))}
     </>
   );
